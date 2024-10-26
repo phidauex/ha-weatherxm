@@ -49,7 +49,7 @@ class WeatherXMAPI:
 
     def get_forecast_data(self, device_id):
         today = datetime.now().strftime('%Y-%m-%d')
-        future = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')
+        future = (datetime.now() + timedelta(days=DEFAULT_FORECAST_DAYS)).strftime('%Y-%m-%d')
         url = f"{self.host}/api/v1/me/devices/{device_id}/forecast?fromDate={today}&toDate={future}"
         headers = {
             'Authorization': f'Bearer {self.auth_token}',
