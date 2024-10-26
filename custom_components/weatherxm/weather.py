@@ -209,8 +209,8 @@ class WeatherXMWeather(CoordinatorEntity, WeatherEntity):
     @property
     def forecast(self):
         return {
-            "hourly": self.forecast_hourly[:24],  # Limit to 24 hourly forecasts
-            "daily": self.forecast_daily[:7],  # Limit to 7 daily forecasts
+            "hourly": self.forecast_hourly[:DEFAULT_FORECAST_HOURS],  # Limit to 24 hourly forecasts
+            "daily": self.forecast_daily[:DEFAULT_FORECAST_DAYS],  # Limit to 7 daily forecasts
         }
 
     @property
@@ -253,7 +253,7 @@ class WeatherXMWeather(CoordinatorEntity, WeatherEntity):
         return self.condition
 
     async def async_forecast_daily(self):
-        return self.forecast_daily[:7]
+        return self.forecast_daily[:DEFAULT_FORECAST_DAYS]
 
     async def async_forecast_hourly(self):
-        return self.forecast_hourly[:24]
+        return self.forecast_hourly[:DEFAULT_FORECAST_HOURS]
